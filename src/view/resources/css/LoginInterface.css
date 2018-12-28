@@ -1,0 +1,20 @@
+#loginInterface {
+    -fx-background-color: rgba(255,255,255)
+}
+
+#loginId, #loginPassword {
+    -jfx-focus-color: #aaaaaa;
+    -jfx-unfocus-color: #aaaaaa;
+    -fx-font-size: 16;
+}
+
+#loginButton:hover {
+    -fx-text-fill: #636e72;
+}
+
+#loginButton:pressed {
+    -fx-text-fill: #aaaaaa;
+}
+
+
+

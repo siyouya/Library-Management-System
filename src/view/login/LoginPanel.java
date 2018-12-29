@@ -3,14 +3,12 @@ package view.login;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
-import controller.toLogin;
+import controller.ToLogin;
 import javafx.geometry.Insets;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import org.nutz.dao.Dao;
 
-
-public class LoginInterface extends HBox
+public class LoginPanel extends HBox
 {
     private JFXButton loginButton = new JFXButton();
 
@@ -20,13 +18,16 @@ public class LoginInterface extends HBox
 
     private GridPane LoginMain = new GridPane();
 
-    public LoginInterface(Dao dao){
+    public LoginPanel(){
 
         // 引入样式文件
-        this.getStylesheets().add("view/resources/css/LoginInterface.css");
+        this.getStylesheets().add("view/resources/css/LoginPanel.css");
 
         // 设置CSSID
-        this.setId("loginInterface");
+        this.setId("LoginPanel");
+
+        this.setMinSize(1024,768);
+        this.setMaxSize(1024,768);
 
         // 设置间隔
         this.setPadding(new Insets(500, 0, 0 ,500));
@@ -49,7 +50,7 @@ public class LoginInterface extends HBox
         loginButton.setText("登陆");
         LoginMain.add(loginButton,1,0,1,2);
 
-        loginButton.setOnMousePressed(new toLogin(loginId, loginPassword, dao));
+        loginButton.setOnMousePressed(new ToLogin(loginId, loginPassword));
 
         this.getChildren().addAll(LoginMain);
 

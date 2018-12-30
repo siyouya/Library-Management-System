@@ -22,8 +22,6 @@ public class BasePanel extends HBox {
 
     private VBox subject = new VBox();
 
-    public VBox main = new VBox();
-
     public BasePanel(){
 
         // 引入样式
@@ -52,8 +50,6 @@ public class BasePanel extends HBox {
 
 //        subject.setPadding(new Insets(20,30,20,30));
 
-        subject.getChildren().addAll(main);
-
         root.getChildren().addAll(title,subject);
 
         //外部透明框，为做阴影效果
@@ -77,16 +73,16 @@ public class BasePanel extends HBox {
     //界面跳转，传入布局为LoginPanel的界面
     public void addLoginPanel(LoginPanel loginPanel) {
 
-        main.getChildren().removeAll();
-        main.getChildren().addAll(loginPanel);
+        subject.getChildren().clear();
+        subject.getChildren().addAll(loginPanel);
     }
 
 
     //界面跳转，传入布局为ManagePanel的界面
     public void addManagePanel(ManagePanel managePanel) {
 
-        main.getChildren().removeAll();
-        main.getChildren().addAll(managePanel);
+        subject.getChildren().clear();
+        subject.getChildren().addAll(managePanel);
     }
 
 }

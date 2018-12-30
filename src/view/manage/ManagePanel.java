@@ -1,18 +1,15 @@
 package view.manage;
 
 import com.jfoenix.controls.JFXButton;
-import controller.ToQuit;
-import controller.ToUserManagePanel;
+import controller.*;
 import javafx.geometry.Insets;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-import java.awt.*;
-
 public class ManagePanel extends HBox {
 
-    private BorderPane choosePanel = new BorderPane();
+    private BorderPane chooseMain = new BorderPane();
 
     private HBox manageMain = new HBox();
 
@@ -24,7 +21,7 @@ public class ManagePanel extends HBox {
 
     private JFXButton borrowManageButton = new JFXButton("借阅管理");
 
-    private JFXButton pressManageButton = new JFXButton("出版社管理");
+    private JFXButton publishManageButton = new JFXButton("出版社管理");
 
     private JFXButton quitButton = new JFXButton("退出登录");
 
@@ -41,40 +38,70 @@ public class ManagePanel extends HBox {
 
         this.setId("ManagePanel");
 
-        choosePanel.setId("ChoosePanel");
+        chooseMain.setId("chooseMain");
 
         backImage.setId("backImage");
         backImage.setMinSize(100,106);
         backImage.setMaxSize(100,106);
 
         userManageButton.setMinSize(100,50);
+        userManageButton.setStyle("-fx-background-color: #aaaaaa");
+        userManageButton.setOnMousePressed(new ToUserManagePanel(this));
 
-        userManageButton.setOnMousePressed(new ToUserManagePanel(manageMain));
         bookManageButton.setMinSize(100,50);
+        bookManageButton.setOnMousePressed(new ToBookManagePanel(this));
+
         borrowManageButton.setMinSize(100,50);
-        pressManageButton.setMinSize(100,50);
+        borrowManageButton.setOnMousePressed(new ToBorrowManagePanel(this));
+
+        publishManageButton.setMinSize(100,50);
+        publishManageButton.setOnMousePressed(new ToPublishManagePanel(this));
 
         quitButton.setId("quitButton");
         quitButton.setMinSize(100,50);
-        quitButton.setOnMouseDragged(new ToQuit(this));
+        quitButton.setOnMousePressed(new ToQuit(this));
 
         menuBar.getChildren().addAll(userManageButton, bookManageButton,
-                borrowManageButton, pressManageButton);
+                borrowManageButton, publishManageButton, quitButton);
 
         bottomBar.setSpacing(10);
         bottomBar.getChildren().addAll(backImage, quitButton);
 
-        choosePanel.setTop(menuBar);
-        choosePanel.setBottom(bottomBar);
+        chooseMain.setTop(menuBar);
+        chooseMain.setBottom(bottomBar);
 
-        choosePanel.setMinSize(104,768);
-        choosePanel.setPadding(new Insets(0,0,1,0));
+        chooseMain.setMinSize(104,768);
+        chooseMain.setPadding(new Insets(2,0,2,0));
         manageMain.setMinSize(920,768);
         manageMain.getChildren().addAll(userManagePanel);
 
-        this.getChildren().addAll(choosePanel,manageMain);
+        this.getChildren().addAll(chooseMain, manageMain);
 
 
+    }
+
+    public JFXButton getUserManageButton() {
+        return userManageButton;
+    }
+
+    public JFXButton getBookManageButton() {
+        return bookManageButton;
+    }
+
+    public JFXButton getBorrowManageButton() {
+        return borrowManageButton;
+    }
+
+    public JFXButton getPublishManageButton() {
+        return publishManageButton;
+    }
+
+    public BorderPane getChooseMain() {
+        return chooseMain;
+    }
+
+    public HBox getManageMain() {
+        return manageMain;
     }
 
 }

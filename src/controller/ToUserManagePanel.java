@@ -2,23 +2,30 @@ package controller;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
-//import view.manage.ChoosePanel;
+import view.manage.ManagePanel;
 import view.manage.UserManagePanel;
 
 public class ToUserManagePanel implements EventHandler<MouseEvent> {
 
-    private HBox manageMain;
+    private ManagePanel managePanel;
 
-    public ToUserManagePanel(HBox manageMain){
-        this.manageMain = manageMain;
+    public ToUserManagePanel(ManagePanel managePanel){
+
+        this.managePanel = managePanel;
     }
 
     @Override
     public void handle(MouseEvent event) {
 
+        managePanel.getUserManageButton().setStyle("-fx-background-color: #aaaaaa");
+        managePanel.getBookManageButton().setStyle("-fx-background-color: TRANSPARENT");
+        managePanel.getPublishManageButton().setStyle("-fx-background-color: TRANSPARENT");
+        managePanel.getBorrowManageButton().setStyle("-fx-background-color: TRANSPARENT");
+
         UserManagePanel userManagePanel = new UserManagePanel();
-        manageMain.getChildren().clear();
-        manageMain.getChildren().addAll(userManagePanel);
+        managePanel.getManageMain().getChildren().clear();
+        managePanel.getManageMain().getChildren().addAll(userManagePanel);
+
+
     }
 }

@@ -8,6 +8,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+import java.awt.*;
+
 public class ManagePanel extends HBox {
 
     private BorderPane choosePanel = new BorderPane();

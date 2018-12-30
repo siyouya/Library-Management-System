@@ -1,0 +1,64 @@
+#tableView{
+    -fx-table-cell-border-color: transparent;
+    -fx-border-color: white;
+}
+
+/*每行内容*/
+.table-column {
+    -fx-alignment: center-left;
+}
+
+/*边框*/
+.table-view
+/*奇数列*/
+,.table-row-cell
+{
+    -fx-background-color: white;
+    -fx-alignment: center-left;
+}
+
+
+/*表头间隔*/
+.column-header-background
+/*偶数列*/
+,.table-row-cell:odd
+/*空闲的头*/
+,.filler
+/*表头两边*/
+,.column-header
+/*表头*/
+,.label
+{
+    -fx-background-color: #f2f3f3;
+    -fx-alignment: center-left;
+}
+
+/*表格边框*/
+.table-row-cell .table-cell {
+    -fx-border-width: 0;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #aaaaaa;
+    /*-fx-background-radius: 10;*/
+}
+
+#searchInput, #addButton, #searchButton{
+    -jfx-unfocus-color: transparent;
+    -jfx-focus-color: transparent;
+    -fx-border-width: 1;
+    -fx-border-radius: 3;
+    -fx-border-color: transparent;
+}
+
+#searchInput {
+    -fx-border-color: #f2f3f3;
+}
+
+#searchButton {
+    -fx-background-color: #82ccdd;
+}
+
+#addButton {
+    -fx-background-color: #fad390;
+}

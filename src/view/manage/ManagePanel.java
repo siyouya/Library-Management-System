@@ -1,12 +1,36 @@
 package view.manage;
 
+import com.jfoenix.controls.JFXButton;
+import controller.ToQuit;
+import controller.ToUserManagePanel;
+import javafx.geometry.Insets;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 public class ManagePanel extends HBox {
 
-    private ChoosePanel choosePanel = new ChoosePanel();
+    private BorderPane choosePanel = new BorderPane();
 
     private HBox manageMain = new HBox();
+
+    private UserManagePanel userManagePanel = new UserManagePanel();
+
+    private JFXButton userManageButton = new JFXButton("用户管理");
+
+    private JFXButton bookManageButton = new JFXButton("图书管理");
+
+    private JFXButton borrowManageButton = new JFXButton("借阅管理");
+
+    private JFXButton pressManageButton = new JFXButton("出版社管理");
+
+    private JFXButton quitButton = new JFXButton("退出登录");
+
+    private VBox menuBar = new VBox();
+
+    private VBox bottomBar = new VBox();
+
+    private HBox backImage = new HBox();
 
     public ManagePanel() {
 
@@ -15,7 +39,36 @@ public class ManagePanel extends HBox {
 
         this.setId("ManagePanel");
 
-        manageMain.setMinSize(924,768);
+        choosePanel.setId("ChoosePanel");
+
+        backImage.setId("backImage");
+        backImage.setMinSize(100,106);
+        backImage.setMaxSize(100,106);
+
+        userManageButton.setMinSize(100,50);
+
+        userManageButton.setOnMousePressed(new ToUserManagePanel(manageMain));
+        bookManageButton.setMinSize(100,50);
+        borrowManageButton.setMinSize(100,50);
+        pressManageButton.setMinSize(100,50);
+
+        quitButton.setId("quitButton");
+        quitButton.setMinSize(100,50);
+        quitButton.setOnMouseDragged(new ToQuit(this));
+
+        menuBar.getChildren().addAll(userManageButton, bookManageButton,
+                borrowManageButton, pressManageButton);
+
+        bottomBar.setSpacing(10);
+        bottomBar.getChildren().addAll(backImage, quitButton);
+
+        choosePanel.setTop(menuBar);
+        choosePanel.setBottom(bottomBar);
+
+        choosePanel.setMinSize(104,768);
+        choosePanel.setPadding(new Insets(0,0,1,0));
+        manageMain.setMinSize(920,768);
+        manageMain.getChildren().addAll(userManagePanel);
 
         this.getChildren().addAll(choosePanel,manageMain);
 

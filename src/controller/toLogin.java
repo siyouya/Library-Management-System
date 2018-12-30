@@ -4,33 +4,40 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
 import model.User;
-import org.nutz.dao.Dao;
+import view.manage.ManagePanel;
 
 
-public class toLogin implements EventHandler<MouseEvent> {
+public class ToLogin implements EventHandler<MouseEvent> {
 
     private JFXTextField id;
     private JFXPasswordField password;
-    private Dao dao;
 
-    public toLogin(JFXTextField id, JFXPasswordField password, Dao dao) {
+    public ToLogin(JFXTextField id, JFXPasswordField password) {
 
         this.id = id;
         this.password = password;
-        this.dao = dao;
     }
 
     @Override
     public void handle(MouseEvent event) {
 
-        User user = dao.fetch(User.class,Integer.parseInt(id.getText()));
+        User user = ToConnect.dao.fetch(User.class,Integer.parseInt(id.getText()));
         if (user.getPassword().equals(password.getText())) {
-            System.out.println("yes");
-        }
 
-//        System.out.println(account.getText());
-//        System.out.println(password.getText());  //判断数据库
+            //创建管理面板
+            ManagePanel managePanel = new ManagePanel();
+
+            // 获取父级
+            VBox root = (VBox) id.getParent().getParent().getParent();
+
+            // 清除所有子级
+            root.getChildren().clear();
+
+            // 添加管理面板
+            root.getChildren().addAll(managePanel);
+        }
 
     }
 

@@ -1,7 +1,9 @@
 #LoginPanel {
     -fx-background-color: rgba(255,255,255,1);
+    /*-fx-background-image: url("../images/psb.gif");*/
     /*-fx-background-image: url("../images/bg.jpg");*/
     -fx-background-size: 100%;
+    -fx-background-radius: 0 0 5 5;
 }
 
 #loginId, #loginPassword {

@@ -6,8 +6,10 @@ import org.nutz.dao.entity.annotation.*;
 public class Book {
 
     @Id
-    // 书号
     private int id;
+
+    // 书号
+    private String number;
 
     // 书名
     private String name;
@@ -21,23 +23,28 @@ public class Book {
     // 出版日期
     private String publishDate;
 
-    public Book(int id, String name, double price, String writer, String publishDate) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.writer = writer;
-        this.publishDate = publishDate;
-    }
+    private String publish;
 
     public Book() {
     }
 
-    public int getId() {
-        return id;
+    public Book(String number, String name, double price, String writer, String publishDate, String publish) {
+        this.number = number;
+        this.name = name;
+        this.price = price;
+        this.writer = writer;
+        this.publishDate = publishDate;
+        this.publish = publish;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public long getId() { return id; }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
     }
 
     public String getName() {
@@ -70,6 +77,14 @@ public class Book {
 
     public void setPublishDate(String publishDate) {
         this.publishDate = publishDate;
+    }
+
+    public String getPublish() {
+        return publish;
+    }
+
+    public void setPublish(String publish) {
+        this.publish = publish;
     }
 }
 

@@ -11,5 +11,6 @@
     <orderEntry type="library" exported="" name="com.jfoenix:jfoenix:8.0.8" level="project" />
     <orderEntry type="library" exported="" name="org.nutz:nutz:1.r.66" level="project" />
     <orderEntry type="library" exported="" name="com.alibaba:druid:1.1.12" level="project" />
+    <orderEntry type="library" exported="" name="de.jensd:fontawesomefx:8.9" level="project" />
   </component>
 </module>

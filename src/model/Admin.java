@@ -3,20 +3,19 @@ package model;
 import org.nutz.dao.entity.annotation.Id;
 import org.nutz.dao.entity.annotation.Table;
 
-import java.text.DateFormat;
 import java.util.Date;
 
-@Table("user")
-public class User{
+@Table("admin")
+public class Admin {
 
     @Id
-    private long id;
-
-    private String studentId;
+    private int id;
 
     private String name;
 
     private String password;
+
+    private String studentId;
 
     private String sex;
 
@@ -26,10 +25,10 @@ public class User{
 
     private String email;
 
-    public User() {
+    public Admin() {
     }
 
-    public User(String studentId, String name, String password, String sex, Date birthday, String telphone, String email) {
+    public Admin(String name, String password, String studentId, String sex, Date birthday, String telphone, String email) {
         this.name = name;
         this.password = password;
         this.studentId = studentId;
@@ -73,9 +72,9 @@ public class User{
         this.sex = sex;
     }
 
-    public String getBirthday() {
-        DateFormat returnYear = DateFormat.getDateInstance();
-        return returnYear.format(birthday); }
+    public Date getBirthday() {
+        return birthday;
+    }
 
     public void setBirthday(Date birthday) {
         this.birthday = birthday;
@@ -97,17 +96,6 @@ public class User{
         this.email = email;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", password='" + password + '\'' +
-                ", studentId='" + studentId + '\'' +
-                ", sex='" + sex + '\'' +
-                ", birthday=" + birthday +
-                ", telphone='" + telphone + '\'' +
-                ", email='" + email + '\'' +
-                '}';
-    }
+
+
 }

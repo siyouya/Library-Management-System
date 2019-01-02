@@ -58,6 +58,7 @@ public class ToUpdateUser implements EventHandler<ActionEvent> {
         user.setCheck(false);
         dao.create(User.class, false);
         dao.update(user);
+        tableView.refresh();
         editStage.close();
 
 

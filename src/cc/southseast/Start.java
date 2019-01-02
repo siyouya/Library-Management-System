@@ -9,8 +9,6 @@ import cc.southseast.view.ui.login.LoginPanel;
 
 public class Start extends Application {
 
-    private Stage primaryStage = new Stage();
-
     private BasePanel root = new BasePanel();
 
     private LoginPanel loginPanel = new LoginPanel();
@@ -19,9 +17,6 @@ public class Start extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-
-        // 创建登陆界面
-//        LoginPanel loginPanel = new LoginPanel(dao);
 
         // 添加登陆界面
         root.windowsInit(primaryStage);

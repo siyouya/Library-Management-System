@@ -9,7 +9,7 @@ import java.util.Random;
 import static cc.southseast.controller.function.ToConnect.*;
 
 
-public class test1 {
+public class RandData {
 
     public static void main(String args[]) throws ClassNotFoundException, UnsupportedEncodingException {
 
@@ -20,8 +20,8 @@ public class test1 {
             dao.create(User.class, false);
             User user = new User();
 
-            String studentId = "2017";
-            for (int j = 0; j < 6; j++) {
+            String studentId = "17";
+            for (int j = 0; j < 8; j++) {
                 studentId += rand.nextInt(10);
             }
 

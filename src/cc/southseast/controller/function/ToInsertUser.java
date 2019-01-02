@@ -60,6 +60,7 @@ public class ToInsertUser implements EventHandler<ActionEvent> {
             user.setCheck(false);
             dao.create(User.class, false);
             dao.insert(user);
+            tableView.refresh();
             addStage.close();
         }
     }

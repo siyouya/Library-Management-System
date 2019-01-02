@@ -1,0 +1,14 @@
+#userEdit, #userDelete {
+    -fx-border-width: 0;
+    -fx-background-radius: 3;
+    -fx-text-fill: white;
+}
+
+#userEdit {
+    -fx-background-color: #34b581;
+}
+
+#userDelete {
+    -fx-background-color: #ff7675;
+    -fx-background-size: 100%;
+}

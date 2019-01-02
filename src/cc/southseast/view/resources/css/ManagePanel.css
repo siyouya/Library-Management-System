@@ -1,0 +1,32 @@
+#ManagePanel {
+
+    /*-fx-border-color: #f2f3f3 TRANSPARENT TRANSPARENT TRANSPARENT;*/
+    -fx-background-color: #2f3136;
+    -fx-background-radius: 0 0 5 5;
+}
+
+#chooseMain {
+
+    /*-fx-border-color: TRANSPARENT #f2f3f3 TRANSPARENT TRANSPARENT;*/
+    -fx-background-color: #282b30;
+    -fx-background-radius: 0 0 0 5;
+}
+
+
+#backImage {
+    /*-fx-background-color: #000000;*/
+    -fx-background-image: url("../images/bg1.gif");
+    -fx-background-size: 100%;
+}
+
+/*--------------------------------------------------------------*/
+
+#quitButton {
+    -fx-background-color: #ff7675;
+}
+
+#userManageButton, #bookManageButton, #borrowManageButton, #publishManageButton, #quitButton {
+    -fx-text-fill: white;
+    -fx-border-width: 0;
+    -fx-background-radius: 5;
+}

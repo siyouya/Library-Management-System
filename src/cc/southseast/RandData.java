@@ -12,7 +12,7 @@ import static cc.southseast.controller.function.ToConnect.*;
 
 public class RandData {
 
-    public static void main(String args[]) throws ClassNotFoundException, UnsupportedEncodingException {
+    public static void main(String args[]) {
 
         Random rand = new Random();
 

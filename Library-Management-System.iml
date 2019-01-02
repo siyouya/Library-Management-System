@@ -13,5 +13,9 @@
     <orderEntry type="library" exported="" name="com.alibaba:druid:1.1.12" level="project" />
     <orderEntry type="library" exported="" name="de.jensd:fontawesomefx:8.9" level="project" />
     <orderEntry type="library" exported="" name="org.apache.commons:commons-lang3:3.8.1" level="project" />
+    <orderEntry type="library" exported="" name="org.bouncycastle:bcmail-jdk15on:1.56" level="project" />
+    <orderEntry type="library" exported="" name="org.bouncycastle:bcpkix-jdk15on:1.57" level="project" />
+    <orderEntry type="library" exported="" name="org.bouncycastle:bcprov-jdk15on:1.60" level="project" />
+    <orderEntry type="library" name="com.xiaoleilu:hutool-all:3.0.9" level="project" />
   </component>
 </module>

@@ -26,9 +26,9 @@ public class ToDelete implements EventHandler<ActionEvent> {
         Iterator<User> iterator = tableView.getItems().iterator();
         while (iterator.hasNext()) {
             User user = iterator.next();
-            if (user.getStudentId() == userId) {
+            if (user.getId() == userId) {
                 iterator.remove();
-                dao.delete(User.class, user.getStudentId());
+                dao.delete(User.class, user.getId());
                 break;
             }
         }

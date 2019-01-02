@@ -1,5 +1,6 @@
 package cc.southseast;
 
+import cc.southseast.controller.sm.SM3Digest;
 import cc.southseast.model.User;
 
 import java.io.UnsupportedEncodingException;
@@ -25,7 +26,7 @@ public class RandData {
                 studentId += rand.nextInt(10);
             }
 
-            user.setStudentId(Long.parseLong(studentId));
+            user.setId(Long.parseLong(studentId));
 
 
 
@@ -57,7 +58,7 @@ public class RandData {
                 password += (char)(rand.nextInt(77) + 48);
             }
 
-            user.setPassword(password);
+            user.setPassword(SM3Digest.encode(password));
 
             user.setBirthday(new java.sql.Date (new Date().getTime()));
 
@@ -87,7 +88,19 @@ public class RandData {
 
         }
 
+        User user = new User();
 
+        dao.create(User.class, false);
+        user.setId(1712121212);
+        user.setSex("男");
+        user.setName("南溟");
+
+        user.setPassword(SM3Digest.encode("south"));
+        user.setEmail("i@southseast.cc");
+        user.setBirthday(java.sql.Date.valueOf("2019-01-01"));
+        user.setTelphone("1234567890");
+        user.setCheck(false);
+        dao.insert(user);
     }
 
 }

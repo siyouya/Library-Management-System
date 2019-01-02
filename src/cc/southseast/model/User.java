@@ -11,7 +11,7 @@ import java.time.ZoneId;
 public class User{
 
     @Id(auto=false)
-    private long studentId;
+    private long id;
 
     private String name;
 
@@ -30,8 +30,8 @@ public class User{
     public User() {
     }
 
-    public User(long studentId, String name, String password, String sex, Date birthday, String telphone, String email, Boolean isCheck) {
-        this.studentId = studentId;
+    public User(long id, String name, String password, String sex, Date birthday, String telphone, String email, Boolean isCheck) {
+        this.id = id;
         this.name = name;
         this.password = password;
         this.sex = sex;
@@ -41,12 +41,12 @@ public class User{
         this.isCheck = isCheck;
     }
 
-    public long getStudentId() {
-        return studentId;
+    public long getId() {
+        return id;
     }
 
-    public void setStudentId(long studentId) {
-        this.studentId = studentId;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName() {

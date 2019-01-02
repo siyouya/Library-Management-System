@@ -48,9 +48,9 @@ public class UserManagePanel extends VBox {
         dao.create(User.class, false);
         List<User> userList = ToConnect.dao.query(User.class, null);
 
-        for (User user: userList) {
-            System.out.println(user.toString());
-        }
+//        for (User user: userList) {
+//            System.out.println(user.toString());
+//        }
 
         ObservableList<User> cacheData = FXCollections.observableArrayList(userList);
 
@@ -88,15 +88,35 @@ public class UserManagePanel extends VBox {
         checkBoxColumn.setCellFactory(cellCheckBox);
         checkBoxColumn.setMaxWidth(25);
 
-//        TableColumn userId = new TableColumn<User, Integer>("序号");
-//        userId.setCellValueFactory(new PropertyValueFactory<User, Integer>("id"));
+        TableColumn userNumber = new TableColumn<User, Integer>("序号");
+        userNumber.setCellValueFactory(new PropertyValueFactory<User, Integer>("number"));
+        userNumber.setCellFactory((col) -> {
+            TableCell<User, String> cell = new TableCell<User, String>() {
+                @Override
+                public void updateItem(String item, boolean empty) {
+                    super.updateItem(item, empty);
+                    this.setText(null);
+                    this.setGraphic(null);
 
-        TableColumn userStudentId = new TableColumn<User, String>("学号");
-        userStudentId.setCellValueFactory(new PropertyValueFactory<User, String>("studentId"));
+                    if (!empty) {
+                        int rowIndex = this.getIndex() + 1;
+                        this.setText(String.valueOf(rowIndex));
+                    }
+                }
+            };
+            return cell;
+        });
+
+        TableColumn userId = new TableColumn<User, String>("账号");
+        userId.setCellValueFactory(new PropertyValueFactory<User, String>("id"));
 
         TableColumn userName = new TableColumn<User, String>("姓名");
         userName.setCellValueFactory(new PropertyValueFactory<User, String>("name"));
 //        userName.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        TableColumn userPassword = new TableColumn<User, String>("密码");
+        userPassword.setCellValueFactory(new PropertyValueFactory<User, String>("password"));
+        userPassword.setMaxWidth(130);
 
         TableColumn userSex = new TableColumn<User, String>("性别");
         userSex.setCellValueFactory(new PropertyValueFactory<User, String>("sex"));
@@ -137,7 +157,7 @@ public class UserManagePanel extends VBox {
                                             new ToUpdateUserPanel(getTableView().getItems().get(getIndex()), tableView));
 
                                     commandBar.getUserDelete().setOnAction(
-                                            new ToDelete(getTableView().getItems().get(getIndex()).getStudentId(), tableView));
+                                            new ToDelete(getTableView().getItems().get(getIndex()).getId(), tableView));
 
                                     setGraphic(commandBar);
                                     setText(null);
@@ -159,10 +179,10 @@ public class UserManagePanel extends VBox {
         tableView.setItems(cacheData);
         tableView.setMinSize(884,680);
         tableView.styleProperty();
-//        tableView.getColumns().setAll(checkBoxColumn, userId, userStudentId, userName, userSex,
-//                userBirthday, userTelphone, userEmail, userCommand);
-        tableView.getColumns().setAll(checkBoxColumn, userStudentId, userName, userSex,
+        tableView.getColumns().setAll(checkBoxColumn, userNumber, userId, userName, userPassword, userSex,
                 userBirthday, userTelphone, userEmail, userCommand);
+//        tableView.getColumns().setAll(checkBoxColumn, userStudentId, userName, userSex,
+//                userBirthday, userTelphone, userEmail, userCommand);
 
         searchInput.setId("searchInput");
         searchInput.setPadding(new Insets(0,0,0,10));

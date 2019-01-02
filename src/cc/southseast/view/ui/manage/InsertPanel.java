@@ -21,12 +21,14 @@ public class InsertPanel extends GridPane {
 //    private JFXListView
     private Label studentIdLabel = new Label("学号");
     private Label nameLabel = new Label("姓名");
+    private Label passwordLabel = new Label("密码");
     private Label sexLabel = new Label("性别");
     private Label birthdaydLabel = new Label("生日");
     private Label emailLabel = new Label("邮箱");
     private Label telphoneLabel = new Label("电话");
     private JFXTextField studentIdInput = new JFXTextField();
     private JFXTextField nameInput = new JFXTextField();
+    private JFXTextField passwordInput = new JFXTextField();
     private JFXTextField sexInput = new JFXTextField();
     private DatePicker birthdayInput = new DatePicker();
     private JFXTextField telphoneInput = new JFXTextField();
@@ -44,7 +46,7 @@ public class InsertPanel extends GridPane {
 
         addButton.setId("saveButton");
         addButton.setOnAction(new ToInsertUser(tableView, studentIdInput, nameInput,
-                sexInput, birthdayInput, telphoneInput, emailInput, addStage));
+                passwordInput, sexInput, birthdayInput, telphoneInput, emailInput, addStage));
         addButton.setMinWidth(45);
         quitButton.setId("quitButton");
         quitButton.setOnAction(new ToClose(addStage));
@@ -53,16 +55,18 @@ public class InsertPanel extends GridPane {
         this.add(studentIdInput, 1, 0);
         this.add(nameLabel, 0, 1);
         this.add(nameInput, 1, 1);
-        this.add(sexLabel, 0, 2);
-        this.add(sexInput, 1, 2);
-        this.add(birthdaydLabel, 0, 3);
-        this.add(birthdayInput, 1, 3);
-        this.add(telphoneLabel, 0, 4);
-        this.add(telphoneInput, 1, 4);
-        this.add(emailLabel, 0, 5);
-        this.add(emailInput, 1, 5);
-        this.add(addButton, 0, 7);
-        this.add(quitButton, 1, 7);
+        this.add(passwordLabel, 0, 2);
+        this.add(passwordInput, 1, 2);
+        this.add(sexLabel, 0, 3);
+        this.add(sexInput, 1, 3);
+        this.add(birthdaydLabel, 0, 4);
+        this.add(birthdayInput, 1, 4);
+        this.add(telphoneLabel, 0, 5);
+        this.add(telphoneInput, 1, 5);
+        this.add(emailLabel, 0, 6);
+        this.add(emailInput, 1, 6);
+        this.add(addButton, 0, 8);
+        this.add(quitButton, 1, 8);
 
     }
 

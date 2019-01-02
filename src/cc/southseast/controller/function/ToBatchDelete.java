@@ -26,7 +26,7 @@ public class ToBatchDelete implements EventHandler<ActionEvent> {
             User user = iterator.next();
             if (user.getCheck()) {
                 iterator.remove();
-                dao.delete(User.class, user.getStudentId());
+                dao.delete(User.class, user.getId());
             }
         }
         tableView.refresh();

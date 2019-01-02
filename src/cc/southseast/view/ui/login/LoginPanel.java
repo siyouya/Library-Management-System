@@ -43,7 +43,7 @@ public class LoginPanel extends HBox
 
         loginId.setId("loginId");
         loginId.setPromptText("请输入账号");
-        loginId.setText("1712120423");
+        loginId.setText("1712121212");
         loginMain.add(loginId, 0, 0);
 
         loginPassword.setId("loginPassword");

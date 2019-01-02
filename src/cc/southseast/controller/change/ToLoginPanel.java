@@ -1,5 +1,6 @@
 package cc.southseast.controller.change;
 
+import cc.southseast.controller.sm.SM3Digest;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import cc.southseast.controller.function.ToConnect;
@@ -25,7 +26,8 @@ public class ToLoginPanel implements EventHandler<MouseEvent> {
     public void handle(MouseEvent event) {
 
         User user = ToConnect.dao.fetch(User.class,Integer.parseInt(id.getText()));
-        if (user.getPassword().equals(password.getText())) {
+
+        if (user.getPassword().equals(SM3Digest.encode(password.getText()))) {
 
             //创建管理面板
             ManagePanel managePanel = new ManagePanel();

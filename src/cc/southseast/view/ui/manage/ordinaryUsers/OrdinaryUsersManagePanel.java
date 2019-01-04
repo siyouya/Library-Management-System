@@ -1,27 +1,23 @@
-package cc.southseast.view.ui.manage;
+package cc.southseast.view.ui.manage.ordinaryUsers;
 
-import cc.southseast.view.ui.manage.user.UserManagePanel;
-import com.jfoenix.controls.JFXButton;
 import cc.southseast.controller.change.*;
+import cc.southseast.view.ui.manage.ordinaryUsers.book.OrdinaryUsersBookManagePanel;
+import com.jfoenix.controls.JFXButton;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-public class ManagePanel extends HBox {
+public class OrdinaryUsersManagePanel extends HBox {
 
     private BorderPane chooseMain = new BorderPane();
 
     private HBox manageMain = new HBox();
 
-    private UserManagePanel userManagePanel = new UserManagePanel();
-
-    private JFXButton userManageButton = new JFXButton("用户管理");
+    private OrdinaryUsersBookManagePanel userManagePanel = new OrdinaryUsersBookManagePanel();
 
     private JFXButton bookManageButton = new JFXButton("书籍管理");
 
     private JFXButton borrowManageButton = new JFXButton("借阅管理");
-
-    private JFXButton publishManageButton = new JFXButton("出版社管理");
 
     private JFXButton quitButton = new JFXButton("退出登录");
 
@@ -31,12 +27,12 @@ public class ManagePanel extends HBox {
 
     private HBox backImage = new HBox();
 
-    public ManagePanel() {
+    public OrdinaryUsersManagePanel() {
 
         // 引入样式文件
         this.getStylesheets().add("cc/southseast/view/resources/css/ManagePanel.css");
 
-        this.setId("ManagePanel");
+        this.setId("AdminManagePanel");
 
         chooseMain.setId("chooseMain");
 
@@ -44,29 +40,20 @@ public class ManagePanel extends HBox {
         backImage.setMinSize(100,106);
         backImage.setMaxSize(100,106);
 
-        userManageButton.setId("userManageButton");
-        userManageButton.setMinSize(100,50);
-        userManageButton.setStyle("-fx-background-color: #2f3136");
-        userManageButton.setOnMousePressed(new ToUserManagePanel(this));
-
         bookManageButton.setId("bookManageButton");
         bookManageButton.setMinSize(100,50);
-        bookManageButton.setOnMousePressed(new ToBookManagePanel(this));
+        bookManageButton.setOnMousePressed(new OrdinaryUsersToBookManagePanel(this));
 
         borrowManageButton.setId("borrowManageButton");
         borrowManageButton.setMinSize(100,50);
-        borrowManageButton.setOnMousePressed(new ToBorrowManagePanel(this));
-
-        publishManageButton.setId("publishManageButton");
-        publishManageButton.setMinSize(100,50);
-        publishManageButton.setOnMousePressed(new ToPublishManagePanel(this));
+        borrowManageButton.setOnMousePressed(new OrdinaryUsersToBorrowManagePanel(this));
 
         quitButton.setId("quitButton");
         quitButton.setMinSize(100,50);
-        quitButton.setOnMousePressed(new ToQuitLoginPanel(this));
+        quitButton.setOnMousePressed(new OrdinaryUsersToQuitLoginPanel(this));
 
-        menuBar.getChildren().addAll(userManageButton, bookManageButton,
-                borrowManageButton, publishManageButton, quitButton);
+        menuBar.getChildren().addAll(bookManageButton,
+                borrowManageButton, quitButton);
 
         bottomBar.setSpacing(10);
         bottomBar.getChildren().addAll(backImage, quitButton);
@@ -83,20 +70,12 @@ public class ManagePanel extends HBox {
 
     }
 
-    public JFXButton getUserManageButton() {
-        return userManageButton;
-    }
-
     public JFXButton getBookManageButton() {
         return bookManageButton;
     }
 
     public JFXButton getBorrowManageButton() {
         return borrowManageButton;
-    }
-
-    public JFXButton getPublishManageButton() {
-        return publishManageButton;
     }
 
     public BorderPane getChooseMain() {

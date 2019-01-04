@@ -1,7 +1,7 @@
 package cc.southseast.controller.change.publish;
 
 import cc.southseast.view.ui.base.BasePanel;
-import cc.southseast.view.ui.manage.publish.PublishInsertPanel;
+import cc.southseast.view.ui.manage.admin.publish.PublishInsertPanel;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;

@@ -1,8 +1,8 @@
-package cc.southseast.controller.change.publish;
+package cc.southseast.controller.change.borrow;
 
-import cc.southseast.model.Publish;
+import cc.southseast.model.Borrow;
 import cc.southseast.view.ui.base.BasePanel;
-import cc.southseast.view.ui.manage.admin.publish.PublishUpdatePanel;
+import cc.southseast.view.ui.manage.admin.borrow.BorrowUpdatePanel;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -16,16 +16,16 @@ import javafx.stage.Stage;
  * @Date: 2019/1/1 7:09 PM
  * @Version 1.0
  */
-public class ToUpdatePublishPanel implements EventHandler<ActionEvent> {
+public class ToUpdateBorrowPanel implements EventHandler<ActionEvent> {
 
     private TableView tableView = new TableView();
 
-    private Publish publish = new Publish();
+    private Borrow borrow = new Borrow();
 
-    public ToUpdatePublishPanel(Publish publish, TableView tableView) {
+    public ToUpdateBorrowPanel(Borrow borrow, TableView tableView) {
 
         this.tableView = tableView;
-        this.publish = publish;
+        this.borrow = borrow;
     }
 
     @Override
@@ -35,7 +35,7 @@ public class ToUpdatePublishPanel implements EventHandler<ActionEvent> {
 
         BasePanel root = new BasePanel();
 
-        PublishUpdatePanel publishUpdatePanel = new PublishUpdatePanel(tableView, editStage);
+        BorrowUpdatePanel borrowUpdatePanel = new BorrowUpdatePanel(tableView, editStage);
 
         Scene scene = new Scene(root);
 
@@ -43,8 +43,8 @@ public class ToUpdatePublishPanel implements EventHandler<ActionEvent> {
 
         root.windowsInit(editStage);
 
-        root.addPublishUpdatePanel(publishUpdatePanel);
-        publishUpdatePanel.addUserInformation(publish);
+        root.addBorrowUpdatePanel(borrowUpdatePanel);
+        borrowUpdatePanel.addUserInformation(borrow);
         // 设置透明度
         scene.setFill(Color.TRANSPARENT);
 

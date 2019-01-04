@@ -17,5 +17,6 @@ public class testCreate {
         dao.create(Publish.class, false);
         dao.create(Book.class, false);
         dao.create(Borrow.class, false);
+        System.out.println((new java.sql.Date(new java.util.Date().getTime())).toLocalDate().plusDays(7));
     }
 }

@@ -1,30 +1,32 @@
 package cc.southseast.controller.change;
 
+import cc.southseast.view.ui.manage.admin.borrow.BorrowManagePanel;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
-import cc.southseast.view.ui.manage.ManagePanel;
+import cc.southseast.view.ui.manage.admin.AdminManagePanel;
 
-//import cc.southseast.view.ui.manage.ChoosePanel;
 
 public class ToBorrowManagePanel implements EventHandler<MouseEvent> {
 
-    private ManagePanel managePanel;
-//    private BorderPane choosePanel;
+    private AdminManagePanel adminManagePanel;
 
-    public ToBorrowManagePanel(ManagePanel managePanel){
+    private BorrowManagePanel borrowManagePanel = new BorrowManagePanel();
 
-        this.managePanel = managePanel;
-//        this.choosePanel = choosePanel;
+    public ToBorrowManagePanel(AdminManagePanel adminManagePanel){
+
+        this.adminManagePanel = adminManagePanel;
     }
 
     @Override
     public void handle(MouseEvent event) {
 
-        managePanel.getUserManageButton().setStyle("-fx-background-color: TRANSPARENT");
-        managePanel.getBookManageButton().setStyle("-fx-background-color: TRANSPARENT");
-        managePanel.getPublishManageButton().setStyle("-fx-background-color: TRANSPARENT");
-        managePanel.getBorrowManageButton().setStyle("-fx-background-color: #2f3136");
-        System.out.println("1");
+        adminManagePanel.getUserManageButton().setStyle("-fx-background-color: TRANSPARENT");
+        adminManagePanel.getBookManageButton().setStyle("-fx-background-color: TRANSPARENT");
+        adminManagePanel.getPublishManageButton().setStyle("-fx-background-color: TRANSPARENT");
+        adminManagePanel.getBorrowManageButton().setStyle("-fx-background-color: #2f3136");
+
+        adminManagePanel.getManageMain().getChildren().clear();
+        adminManagePanel.getManageMain().getChildren().addAll(borrowManagePanel);
 
 //        for (int i = 0; i < 4; i++)
 //            choosePanel.getChildren().get(i).setStyle("-fx-background-color: TRANSPARENT");

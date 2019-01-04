@@ -1,4 +1,4 @@
-package cc.southseast.view.ui.manage.publish;
+package cc.southseast.view.ui.manage.admin.publish;
 
 import cc.southseast.controller.function.ToClose;
 import cc.southseast.controller.function.publish.ToUpdatePublish;

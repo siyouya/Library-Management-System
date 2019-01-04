@@ -2,7 +2,7 @@ package cc.southseast.controller.change.user;
 
 import cc.southseast.model.User;
 import cc.southseast.view.ui.base.BasePanel;
-import cc.southseast.view.ui.manage.user.UpdatePanel;
+import cc.southseast.view.ui.manage.admin.user.UpdatePanel;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;

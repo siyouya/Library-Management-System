@@ -1,4 +1,4 @@
-package cc.southseast.view.ui.manage.publish;
+package cc.southseast.view.ui.manage.admin.publish;
 
 import cc.southseast.controller.change.publish.ToInsertPublishPanel;
 import cc.southseast.controller.change.publish.ToUpdatePublishPanel;
@@ -24,7 +24,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 
-import java.util.Date;
 import java.util.List;
 
 import static cc.southseast.controller.function.ToConnect.*;

@@ -65,6 +65,7 @@ public class ToInsertUser implements EventHandler<ActionEvent> {
             user.setTelphone(telphoneInput.getText());
             user.setEmail(emailInput.getText());
             user.setCheck(false);
+            user.setAdmin(false);
             dao.create(User.class, false);
             dao.insert(user);
             tableView.getItems().add(user);

@@ -1,4 +1,4 @@
-package cc.southseast.view.ui.manage.book;
+package cc.southseast.view.ui.manage.admin.book;
 
 import cc.southseast.controller.change.book.ToInsertBookPanel;
 import cc.southseast.controller.change.book.ToUpdateBookPanel;

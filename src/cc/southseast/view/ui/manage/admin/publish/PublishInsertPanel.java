@@ -1,7 +1,6 @@
-package cc.southseast.view.ui.manage.publish;
+package cc.southseast.view.ui.manage.admin.publish;
 
 import cc.southseast.controller.function.ToClose;
-import cc.southseast.controller.function.book.ToInsertBook;
 import cc.southseast.controller.function.publish.ToInsertPublish;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;

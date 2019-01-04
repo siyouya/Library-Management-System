@@ -1,8 +1,7 @@
-package cc.southseast.view.ui.manage.user;
+package cc.southseast.view.ui.manage.admin.user;
 
+import cc.southseast.controller.function.user.ToInsertUser;
 import cc.southseast.controller.function.ToClose;
-import cc.southseast.controller.function.user.ToUpdateUser;
-import cc.southseast.model.User;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.geometry.Insets;
@@ -17,27 +16,27 @@ import javafx.stage.Stage;
  * @Date: 2019/1/1 7:21 PM
  * @Version 1.0
  */
-public class UpdatePanel extends GridPane {
+public class InsertPanel extends GridPane {
 
 //    private JFXListView
-    private Label studentIdLabel = new Label("学号");
+    private Label idLabel = new Label("学号");
     private Label nameLabel = new Label("姓名");
     private Label passwordLabel = new Label("密码");
     private Label sexLabel = new Label("性别");
     private Label birthdaydLabel = new Label("生日");
-    private Label telphoneLabel = new Label("电话");
     private Label emailLabel = new Label("邮箱");
-    private JFXButton updateButton = new JFXButton("保存");
-    private JFXButton quitButton = new JFXButton("取消");
-    private Label studentId = new Label();
+    private Label telphoneLabel = new Label("电话");
+    private JFXTextField idInput = new JFXTextField();
     private JFXTextField nameInput = new JFXTextField();
     private JFXTextField passwordInput = new JFXTextField();
     private JFXTextField sexInput = new JFXTextField();
     private DatePicker birthdayInput = new DatePicker();
     private JFXTextField telphoneInput = new JFXTextField();
     private JFXTextField emailInput = new JFXTextField();
+    private JFXButton addButton = new JFXButton("添加");
+    private JFXButton quitButton = new JFXButton("取消");
 
-    public UpdatePanel(TableView tableView, Stage editStage) {
+    public InsertPanel(TableView tableView, Stage addStage) {
 
         // 引入样式文件
         this.getStylesheets().add("cc/southseast/view/resources/css/EditPanel.css");
@@ -45,16 +44,15 @@ public class UpdatePanel extends GridPane {
         this.setHgap(10);
         this.setVgap(10);
 
-        updateButton.setId("saveButton");
-        updateButton.setOnAction(new ToUpdateUser(tableView, studentId, nameInput,
-                passwordInput, sexInput, birthdayInput, telphoneInput, emailInput, editStage));
-        updateButton.setMinWidth(45);
+        addButton.setId("saveButton");
+        addButton.setOnAction(new ToInsertUser(tableView, idInput, nameInput,
+                passwordInput, sexInput, birthdayInput, telphoneInput, emailInput, addStage));
+        addButton.setMinWidth(45);
         quitButton.setId("quitButton");
-        quitButton.setOnAction(new ToClose(editStage));
-        birthdayInput.setId("birthdayInput");
+        quitButton.setOnAction(new ToClose(addStage));
 
-        this.add(studentIdLabel, 0, 0);
-        this.add(studentId, 1, 0);
+        this.add(idLabel, 0, 0);
+        this.add(idInput, 1, 0);
         this.add(nameLabel, 0, 1);
         this.add(nameInput, 1, 1);
         this.add(passwordLabel, 0, 2);
@@ -67,19 +65,8 @@ public class UpdatePanel extends GridPane {
         this.add(telphoneInput, 1, 5);
         this.add(emailLabel, 0, 6);
         this.add(emailInput, 1, 6);
-        this.add(updateButton, 0, 8);
+        this.add(addButton, 0, 8);
         this.add(quitButton, 1, 8);
 
     }
-
-    public void addUserInformation(User user) {
-        studentId.setText(String.valueOf(user.getId()));
-        nameInput.setText(user.getName());
-        passwordInput.setText(user.getPassword());
-        sexInput.setText(user.getSex());
-        birthdayInput.setValue(user.getBirthday());
-        telphoneInput.setText(user.getTelphone());
-        emailInput.setText(user.getEmail());
-    }
-
 }

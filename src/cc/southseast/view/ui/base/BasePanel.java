@@ -2,12 +2,14 @@ package cc.southseast.view.ui.base;
 
 import cc.southseast.controller.function.ToClose;
 import cc.southseast.controller.function.ToDrag;
-import cc.southseast.view.ui.manage.book.BookInsertPanel;
-import cc.southseast.view.ui.manage.book.BookUpdatePanel;
-import cc.southseast.view.ui.manage.publish.PublishInsertPanel;
-import cc.southseast.view.ui.manage.publish.PublishUpdatePanel;
-import cc.southseast.view.ui.manage.user.InsertPanel;
-import cc.southseast.view.ui.manage.user.UpdatePanel;
+import cc.southseast.view.ui.manage.admin.book.BookInsertPanel;
+import cc.southseast.view.ui.manage.admin.book.BookUpdatePanel;
+import cc.southseast.view.ui.manage.admin.borrow.BorrowInsertPanel;
+import cc.southseast.view.ui.manage.admin.borrow.BorrowUpdatePanel;
+import cc.southseast.view.ui.manage.admin.publish.PublishInsertPanel;
+import cc.southseast.view.ui.manage.admin.publish.PublishUpdatePanel;
+import cc.southseast.view.ui.manage.admin.user.InsertPanel;
+import cc.southseast.view.ui.manage.admin.user.UpdatePanel;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
@@ -15,7 +17,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import cc.southseast.view.ui.login.LoginPanel;
-import cc.southseast.view.ui.manage.ManagePanel;
+import cc.southseast.view.ui.manage.admin.AdminManagePanel;
 import javafx.stage.StageStyle;
 
 public class BasePanel extends HBox {
@@ -85,10 +87,10 @@ public class BasePanel extends HBox {
 
 
     //界面跳转，传入布局为ManagePanel的界面
-    public void addManagePanel(ManagePanel managePanel) {
+    public void addManagePanel(AdminManagePanel adminManagePanel) {
 
         subject.getChildren().clear();
-        subject.getChildren().addAll(managePanel);
+        subject.getChildren().addAll(adminManagePanel);
     }
 
     public void addUpdatePanel(UpdatePanel updatePanel) {
@@ -132,6 +134,19 @@ public class BasePanel extends HBox {
 
         subject.getChildren().clear();
         subject.getChildren().addAll(publishUpdatePanel);
+    }
+
+    public void addBorrowInsertPanel(BorrowInsertPanel borrowInsertPanel) {
+
+        subject.getChildren().clear();
+        subject.getChildren().addAll(borrowInsertPanel);
+    }
+
+
+    public void addBorrowUpdatePanel(BorrowUpdatePanel borrowUpdatePanel) {
+
+        subject.getChildren().clear();
+        subject.getChildren().addAll(borrowUpdatePanel);
     }
 
 }

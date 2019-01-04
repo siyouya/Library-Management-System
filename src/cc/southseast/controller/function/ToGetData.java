@@ -1,9 +1,9 @@
 package cc.southseast.controller.function;
 
 import cc.southseast.model.Book;
+import cc.southseast.model.Borrow;
 import cc.southseast.model.Publish;
 import cc.southseast.model.User;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 /**
@@ -18,5 +18,7 @@ public class ToGetData {
     public static ObservableList<Book> bookCacheData;
 
     public static ObservableList<Publish> publishCacheData;
+
+    public static ObservableList<Borrow> borrowCacheData;
 
 }

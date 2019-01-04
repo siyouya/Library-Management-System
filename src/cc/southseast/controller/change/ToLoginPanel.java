@@ -3,7 +3,8 @@ package cc.southseast.controller.change;
 import cc.southseast.controller.sm.SM3Digest;
 import cc.southseast.view.ui.base.BasePanel;
 import cc.southseast.view.ui.base.HintPanel;
-import cc.southseast.view.ui.manage.user.UpdatePanel;
+import cc.southseast.view.ui.manage.admin.AdminManagePanel;
+import cc.southseast.view.ui.manage.ordinaryUsers.OrdinaryUsersManagePanel;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import cc.southseast.controller.function.ToConnect;
@@ -12,7 +13,6 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import cc.southseast.model.User;
-import cc.southseast.view.ui.manage.ManagePanel;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -56,7 +56,7 @@ public class ToLoginPanel implements EventHandler<MouseEvent> {
             if (user.getAdmin() && user.getPassword().equals(SM3Digest.encode(password.getText()))) {
 
                     //创建管理面板
-                    ManagePanel managePanel = new ManagePanel();
+                    AdminManagePanel adminManagePanel = new AdminManagePanel();
 
                     // 获取父级
                     VBox root = (VBox) id.getParent().getParent().getParent();
@@ -65,9 +65,21 @@ public class ToLoginPanel implements EventHandler<MouseEvent> {
                     root.getChildren().clear();
 
                     // 添加管理面板
-                    root.getChildren().addAll(managePanel);
+                    root.getChildren().addAll(adminManagePanel);
             }
             else if (!user.getAdmin() && user.getPassword().equals(SM3Digest.encode(password.getText()))) {
+
+                //创建管理面板
+                OrdinaryUsersManagePanel ordinaryUsersManagePanel = new OrdinaryUsersManagePanel();
+
+                // 获取父级
+                VBox root = (VBox) id.getParent().getParent().getParent();
+
+                // 清除所有子级
+                root.getChildren().clear();
+
+                // 添加管理面板
+                root.getChildren().addAll(ordinaryUsersManagePanel);
             }
             else {
 

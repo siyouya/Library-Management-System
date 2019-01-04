@@ -28,7 +28,7 @@ public class ToDeletePublish implements EventHandler<ActionEvent> {
             Publish publish = iterator.next();
             if (publish.getPublishId() == publishId) {
                 iterator.remove();
-                dao.delete(User.class, publish.getPublishId());
+                dao.delete(Publish.class, publish.getPublishId());
                 break;
             }
         }

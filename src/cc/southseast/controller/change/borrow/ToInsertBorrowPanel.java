@@ -1,7 +1,7 @@
-package cc.southseast.controller.change.user;
+package cc.southseast.controller.change.borrow;
 
 import cc.southseast.view.ui.base.BasePanel;
-import cc.southseast.view.ui.manage.admin.user.InsertPanel;
+import cc.southseast.view.ui.manage.admin.borrow.BorrowInsertPanel;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -15,11 +15,11 @@ import javafx.stage.Stage;
  * @Date: 2019/1/1 7:09 PM
  * @Version 1.0
  */
-public class ToInsertUserPanel implements EventHandler<ActionEvent> {
+public class ToInsertBorrowPanel implements EventHandler<ActionEvent> {
 
     private TableView tableView = new TableView();
 
-    public ToInsertUserPanel(TableView tableView) {
+    public ToInsertBorrowPanel(TableView tableView) {
 
         this.tableView = tableView;
     }
@@ -29,13 +29,13 @@ public class ToInsertUserPanel implements EventHandler<ActionEvent> {
 
         Stage addStage = new Stage();
 
-        InsertPanel insertPanel = new InsertPanel(tableView, addStage);
+        BorrowInsertPanel borrowInsertPanel = new BorrowInsertPanel(tableView, addStage);
 
         BasePanel root = new BasePanel();
 
         root.windowsInit(addStage);
 
-        root.addInsertPanel(insertPanel);
+        root.addBorrowInsertPanel(borrowInsertPanel);
 
         Scene scene = new Scene(root);
 

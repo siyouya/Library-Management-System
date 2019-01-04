@@ -1,17 +1,17 @@
 package cc.southseast;
 
+import cc.southseast.view.ui.manage.admin.AdminManagePanel;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import cc.southseast.view.ui.base.BasePanel;
-import cc.southseast.view.ui.manage.ManagePanel;
 
 public class StartWithNoLogin extends Application {
 
     private BasePanel root = new BasePanel();
 
-    private ManagePanel managePanel = new ManagePanel();
+    private AdminManagePanel adminManagePanel = new AdminManagePanel();
 
     private Scene scene = new Scene(root);
 
@@ -20,7 +20,7 @@ public class StartWithNoLogin extends Application {
 
         // 添加登陆界面
         root.windowsInit(primaryStage);
-        root.addManagePanel(managePanel);
+        root.addManagePanel(adminManagePanel);
 
         // 设置透明度
         scene.setFill(Color.TRANSPARENT);

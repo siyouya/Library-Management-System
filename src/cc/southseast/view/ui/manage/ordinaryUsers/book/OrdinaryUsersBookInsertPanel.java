@@ -1,12 +1,10 @@
-package cc.southseast.view.ui.manage.book;
+package cc.southseast.view.ui.manage.ordinaryUsers.book;
 
 import cc.southseast.controller.function.ToClose;
 import cc.southseast.controller.function.book.ToInsertBook;
-import cc.southseast.controller.function.user.ToInsertUser;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.geometry.Insets;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.GridPane;
@@ -17,7 +15,7 @@ import javafx.stage.Stage;
  * @Date: 2019/1/1 7:21 PM
  * @Version 1.0
  */
-public class BookInsertPanel extends GridPane {
+public class OrdinaryUsersBookInsertPanel extends GridPane {
 
 //    private JFXListView
     private Label idLabel = new Label("书号");
@@ -33,7 +31,7 @@ public class BookInsertPanel extends GridPane {
     private JFXButton addButton = new JFXButton("添加");
     private JFXButton quitButton = new JFXButton("取消");
 
-    public BookInsertPanel(TableView tableView, Stage addStage) {
+    public OrdinaryUsersBookInsertPanel(TableView tableView, Stage addStage) {
 
         // 引入样式文件
         this.getStylesheets().add("cc/southseast/view/resources/css/EditPanel.css");

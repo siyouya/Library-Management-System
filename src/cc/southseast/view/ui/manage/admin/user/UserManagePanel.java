@@ -1,4 +1,4 @@
-package cc.southseast.view.ui.manage.user;
+package cc.southseast.view.ui.manage.admin.user;
 
 import cc.southseast.controller.change.user.ToInsertUserPanel;
 import cc.southseast.controller.change.user.ToUpdateUserPanel;

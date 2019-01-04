@@ -1,8 +1,7 @@
 package cc.southseast.controller.change.book;
 
 import cc.southseast.view.ui.base.BasePanel;
-import cc.southseast.view.ui.manage.book.BookInsertPanel;
-import cc.southseast.view.ui.manage.user.InsertPanel;
+import cc.southseast.view.ui.manage.admin.book.BookInsertPanel;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;

@@ -1,8 +1,7 @@
-package cc.southseast.view.ui.manage.book;
+package cc.southseast.view.ui.manage.admin.book;
 
 import cc.southseast.controller.function.ToClose;
 import cc.southseast.controller.function.book.ToUpdateBook;
-import cc.southseast.controller.function.user.ToUpdateUser;
 import cc.southseast.model.Book;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;

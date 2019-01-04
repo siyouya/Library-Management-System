@@ -1,4 +1,4 @@
-package cc.southseast.controller.function;
+package cc.southseast.controller.function.user;
 
 import cc.southseast.controller.sm.SM3Digest;
 import cc.southseast.model.User;
@@ -8,11 +8,11 @@ import javafx.event.EventHandler;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import static cc.southseast.controller.function.ToConnect.*;
+import static cc.southseast.controller.function.ToGetData.userCacheData;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import java.sql.Date;
 import java.time.ZoneId;
-import java.util.List;
 
 /**
  * @Author: Southseast
@@ -47,8 +47,8 @@ public class ToUpdateUser implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent event) {
+
         User user = dao.fetch(User.class, Long.parseLong(studentId.getText()));
-//        user.setStudentId(Long.parseLong(studentId.getText()));
         user.setName(nameInput.getText());
         user.setPassword(SM3Digest.encode(passwordInput.getText()));
         user.setSex(sexInput.getText());
@@ -58,22 +58,22 @@ public class ToUpdateUser implements EventHandler<ActionEvent> {
         user.setTelphone(telphoneInput.getText());
         user.setEmail(emailInput.getText());
         user.setCheck(false);
+
         dao.create(User.class, false);
         dao.update(user);
         tableView.refresh();
-        List<User> o = tableView.getItems();
+
         int i = 0;
-        for (User beforeUser: o) {
+        for (User beforeUser: userCacheData) {
             if (beforeUser.getId() == user.getId()){
-                ((User) tableView.getItems().get(i)).setName(nameInput.getText());
-                ((User) tableView.getItems().get(i)).setPassword(SM3Digest.encode(passwordInput.getText()));
-                ((User) tableView.getItems().get(i)).setSex(sexInput.getText());
-                ((User) tableView.getItems().get(i)).setBirthday(
-                        new Date(Date.from(birthdayInput.getValue().atStartOfDay()
-                                .atZone(ZoneId.systemDefault()).toInstant()).getTime()));
-                ((User) tableView.getItems().get(i)).setTelphone(telphoneInput.getText());
-                ((User) tableView.getItems().get(i)).setEmail(emailInput.getText());
-                ((User) tableView.getItems().get(i)).setCheck(false);
+                (userCacheData.get(i)).setName(nameInput.getText());
+                (userCacheData.get(i)).setPassword(SM3Digest.encode(passwordInput.getText()));
+                (userCacheData.get(i)).setSex(sexInput.getText());
+                (userCacheData.get(i)).setBirthday(new Date(Date.from(birthdayInput.getValue()
+                        .atStartOfDay().atZone(ZoneId.systemDefault()).toInstant()).getTime()));
+                (userCacheData.get(i)).setTelphone(telphoneInput.getText());
+                (userCacheData.get(i)).setEmail(emailInput.getText());
+                (userCacheData.get(i)).setCheck(false);
             }
             i++;
         }

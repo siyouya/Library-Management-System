@@ -1,8 +1,7 @@
-package cc.southseast.controller.change;
+package cc.southseast.controller.change.user;
 
-import cc.southseast.model.User;
 import cc.southseast.view.ui.base.BasePanel;
-import cc.southseast.view.ui.manage.UpdatePanel;
+import cc.southseast.view.ui.manage.user.InsertPanel;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -16,42 +15,39 @@ import javafx.stage.Stage;
  * @Date: 2019/1/1 7:09 PM
  * @Version 1.0
  */
-public class ToUpdateUserPanel implements EventHandler<ActionEvent> {
+public class ToInsertUserPanel implements EventHandler<ActionEvent> {
 
     private TableView tableView = new TableView();
 
-    private User user = new User();
-
-    public ToUpdateUserPanel(User user, TableView tableView) {
+    public ToInsertUserPanel(TableView tableView) {
 
         this.tableView = tableView;
-        this.user = user;
     }
 
     @Override
     public void handle(ActionEvent event) {
 
-        Stage editStage = new Stage();
+        Stage addStage = new Stage();
+
+        InsertPanel insertPanel = new InsertPanel(tableView, addStage);
 
         BasePanel root = new BasePanel();
 
-        UpdatePanel updatePanel = new UpdatePanel(tableView, editStage);
+        root.windowsInit(addStage);
+
+        root.addInsertPanel(insertPanel);
 
         Scene scene = new Scene(root);
 
         Stage stage = (Stage) tableView.getScene().getWindow();
 
-        root.windowsInit(editStage);
-
-        root.addUpdatePanel(updatePanel);
-        updatePanel.addUserInformation(user);
         // 设置透明度
         scene.setFill(Color.TRANSPARENT);
 
-        editStage.initModality(Modality.WINDOW_MODAL);
-        editStage.initOwner(stage);
-        editStage.setScene(scene);
-        editStage.show();
+        addStage.initModality(Modality.WINDOW_MODAL);
+        addStage.initOwner(stage);
+        addStage.setScene(scene);
+        addStage.show();
 
     }
 }

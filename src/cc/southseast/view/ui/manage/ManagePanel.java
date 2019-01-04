@@ -1,5 +1,6 @@
 package cc.southseast.view.ui.manage;
 
+import cc.southseast.view.ui.manage.user.UserManagePanel;
 import com.jfoenix.controls.JFXButton;
 import cc.southseast.controller.change.*;
 import javafx.scene.layout.BorderPane;
@@ -16,7 +17,7 @@ public class ManagePanel extends HBox {
 
     private JFXButton userManageButton = new JFXButton("用户管理");
 
-    private JFXButton bookManageButton = new JFXButton("图书管理");
+    private JFXButton bookManageButton = new JFXButton("书籍管理");
 
     private JFXButton borrowManageButton = new JFXButton("借阅管理");
 
@@ -72,11 +73,8 @@ public class ManagePanel extends HBox {
 
         chooseMain.setTop(menuBar);
         chooseMain.setBottom(bottomBar);
-
-//        chooseMain.setMinSize(104,768);
-//        chooseMain.setPadding(new Insets(2,0,2,0));
-//        manageMain.setMinSize(920,768);
         chooseMain.setMinSize(100,768);
+
         manageMain.setMinSize(924,768);
         manageMain.getChildren().addAll(userManagePanel);
 

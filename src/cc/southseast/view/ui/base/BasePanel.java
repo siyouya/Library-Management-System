@@ -2,8 +2,12 @@ package cc.southseast.view.ui.base;
 
 import cc.southseast.controller.function.ToClose;
 import cc.southseast.controller.function.ToDrag;
-import cc.southseast.view.ui.manage.InsertPanel;
-import cc.southseast.view.ui.manage.UpdatePanel;
+import cc.southseast.view.ui.manage.book.BookInsertPanel;
+import cc.southseast.view.ui.manage.book.BookUpdatePanel;
+import cc.southseast.view.ui.manage.publish.PublishInsertPanel;
+import cc.southseast.view.ui.manage.publish.PublishUpdatePanel;
+import cc.southseast.view.ui.manage.user.InsertPanel;
+import cc.southseast.view.ui.manage.user.UpdatePanel;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
@@ -97,6 +101,37 @@ public class BasePanel extends HBox {
 
         subject.getChildren().clear();
         subject.getChildren().addAll(insertPanel);
+    }
+
+    public void addHintPanel(HintPanel hintPanel) {
+
+        subject.getChildren().clear();
+        subject.getChildren().addAll(hintPanel);
+    }
+
+    public void addBookUpdatePanel(BookUpdatePanel bookUpdatePanel) {
+
+        subject.getChildren().clear();
+        subject.getChildren().addAll(bookUpdatePanel);
+    }
+
+    public void addBookInsertPanel(BookInsertPanel bookInsertPanel) {
+
+        subject.getChildren().clear();
+        subject.getChildren().addAll(bookInsertPanel);
+    }
+
+    public void addPublishInsertPanel(PublishInsertPanel publishInsertPanel) {
+
+        subject.getChildren().clear();
+        subject.getChildren().addAll(publishInsertPanel);
+    }
+
+
+    public void addPublishUpdatePanel(PublishUpdatePanel publishUpdatePanel) {
+
+        subject.getChildren().clear();
+        subject.getChildren().addAll(publishUpdatePanel);
     }
 
 }

@@ -28,6 +28,9 @@
     -fx-background-repeat: no-repeat;
 }
 
+.radio-button {
+    -fx-text-fill: white;
+}
 
 
 

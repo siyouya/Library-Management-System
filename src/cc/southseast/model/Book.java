@@ -2,65 +2,72 @@ package cc.southseast.model;
 
 import org.nutz.dao.entity.annotation.*;
 
+import java.sql.Date;
+import java.util.List;
+
 @Table("book")
 public class Book {
 
-    @Id
-    private int id;
 
+    @Id(auto=false)
     // 书号
-    private String number;
+    private long bookId;
 
     // 书名
-    private String name;
+    private String bookName;
 
     // 价格
-    private double price;
+    private double bookPrice;
 
     // 作者
     private String writer;
 
-    // 出版日期
-    private String publishDate;
+    private long publishId;
 
-    private String publish;
+    private Boolean isCheck;
+
+    @ManyMany(relation = "b_user_book", from = "bookId", to = "id")
+    private List<User> user;
+
+    @One(field = "publishId")
+    public Publish publish;
 
     public Book() {
     }
 
-    public Book(String number, String name, double price, String writer, String publishDate, String publish) {
-        this.number = number;
-        this.name = name;
-        this.price = price;
+    public Book(long bookId, String bookName, double bookPrice, String writer, long publishId, Boolean isCheck, List<User> user, Publish publish) {
+        this.bookId = bookId;
+        this.bookName = bookName;
+        this.bookPrice = bookPrice;
         this.writer = writer;
-        this.publishDate = publishDate;
+        this.publishId = publishId;
+        this.isCheck = isCheck;
+        this.user = user;
         this.publish = publish;
     }
 
-    public long getId() { return id; }
-
-    public String getNumber() {
-        return number;
+    public long getBookId() {
+        return bookId;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public void setBookId(long bookId) {
+        this.bookId = bookId;
     }
 
-    public String getName() {
-        return name;
+    public String getBookName() {
+        return bookName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setBookName(String bookName) {
+        this.bookName = bookName;
     }
 
-    public double getPrice() {
-        return price;
+    public double getBookPrice() {
+        return bookPrice;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setBookPrice(double bookPrice) {
+        this.bookPrice = bookPrice;
     }
 
     public String getWriter() {
@@ -71,19 +78,35 @@ public class Book {
         this.writer = writer;
     }
 
-    public String getPublishDate() {
-        return publishDate;
+    public long getPublishId() {
+        return publishId;
     }
 
-    public void setPublishDate(String publishDate) {
-        this.publishDate = publishDate;
+    public void setPublishId(long publishId) {
+        this.publishId = publishId;
     }
 
-    public String getPublish() {
+    public Boolean getCheck() {
+        return isCheck;
+    }
+
+    public void setCheck(Boolean check) {
+        isCheck = check;
+    }
+
+    public List<User> getUser() {
+        return user;
+    }
+
+    public void setUser(List<User> user) {
+        this.user = user;
+    }
+
+    public Publish getPublish() {
         return publish;
     }
 
-    public void setPublish(String publish) {
+    public void setPublish(Publish publish) {
         this.publish = publish;
     }
 }

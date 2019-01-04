@@ -1,13 +1,17 @@
-package cc.southseast.view.ui.manage;
+package cc.southseast.view.ui.manage.user;
 
-import cc.southseast.controller.change.ToInsertUserPanel;
-import cc.southseast.controller.change.ToUpdateUserPanel;
+import cc.southseast.controller.change.user.ToInsertUserPanel;
+import cc.southseast.controller.change.user.ToUpdateUserPanel;
 import cc.southseast.controller.function.*;
+import cc.southseast.controller.function.user.ToBatchDelete;
+import cc.southseast.controller.function.user.ToDelete;
+import cc.southseast.controller.function.user.ToSearch;
+import cc.southseast.view.ui.manage.CheckBoxTableView;
+import cc.southseast.view.ui.manage.CommandBarTableView;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -19,8 +23,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 import cc.southseast.model.User;
-
 import static cc.southseast.controller.function.ToConnect.*;
+import static cc.southseast.controller.function.ToGetData.*;
 import java.util.Date;
 import java.util.List;
 
@@ -52,8 +56,7 @@ public class UserManagePanel extends VBox {
 //            System.out.println(user.toString());
 //        }
 
-        ObservableList<User> cacheData = FXCollections.observableArrayList(userList);
-
+        userCacheData = FXCollections.observableArrayList(userList);
 
         //多选
         TableColumn checkBoxColumn = new TableColumn<User, Boolean>();
@@ -72,8 +75,7 @@ public class UserManagePanel extends VBox {
 
                     @Override
                     public void handle(ActionEvent event) {
-//                        System.out.println("1");
-                        User user = cacheData.get(cell.getIndex());
+                        User user = userCacheData.get(cell.getIndex());
                         if(user.getCheck()){
                             user.setCheck(false);
                         }else{
@@ -112,7 +114,6 @@ public class UserManagePanel extends VBox {
 
         TableColumn userName = new TableColumn<User, String>("姓名");
         userName.setCellValueFactory(new PropertyValueFactory<User, String>("name"));
-//        userName.setCellFactory(TextFieldTableCell.forTableColumn());
 
         TableColumn userPassword = new TableColumn<User, String>("密码");
         userPassword.setCellValueFactory(new PropertyValueFactory<User, String>("password"));
@@ -120,69 +121,58 @@ public class UserManagePanel extends VBox {
 
         TableColumn userSex = new TableColumn<User, String>("性别");
         userSex.setCellValueFactory(new PropertyValueFactory<User, String>("sex"));
-//        userSex.setCellFactory(TextFieldTableCell.forTableColumn());
 
         TableColumn userBirthday = new TableColumn<User, Date>("生日");
         userBirthday.setCellValueFactory(new PropertyValueFactory<User, Date>("birthday"));
-//        userBirthday.setCellFactory(TextFieldTableCell.forTableColumn());
 
         TableColumn userTelphone = new TableColumn<User, String>("电话");
         userTelphone.setCellValueFactory(new PropertyValueFactory<User, String>("telphone"));
-//        userTelphone.setCellFactory(TextFieldTableCell.forTableColumn());
 
         TableColumn userEmail = new TableColumn<User, String>("邮箱");
         userEmail.setCellValueFactory(new PropertyValueFactory<User, String>("email"));
-//        userEmail.setCellFactory(TextFieldTableCell.forTableColumn());
 
         TableColumn userCommand = new TableColumn<>("操作");
 
         Callback<TableColumn<User, String>, TableCell<User, String>> cellCommand
                 = new Callback<TableColumn<User, String>, TableCell<User, String>>() {
 
+            @Override
+            public TableCell call(TableColumn<User, String> param) {
+
+                TableCell<User, String> cell = new TableCell<User, String>() {
+
+                    CommandBarTableView commandBar = new CommandBarTableView();
+
                     @Override
-                    public TableCell call(TableColumn<User, String> param) {
+                    public void updateItem(String item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                            setText(null);
+                        } else {
+                            commandBar.getUserEdit().setOnAction(
+                                    new ToUpdateUserPanel(getTableView().getItems().get(getIndex()), tableView));
 
-                        TableCell<User, String> cell = new TableCell<User, String>() {
+                            commandBar.getUserDelete().setOnAction(
+                                    new ToDelete(getTableView().getItems().get(getIndex()).getId(), tableView));
 
-                            CommandBarTableView commandBar = new CommandBarTableView();
-
-                            @Override
-                            public void updateItem(String item, boolean empty) {
-                                super.updateItem(item, empty);
-                                if (empty) {
-                                    setGraphic(null);
-                                    setText(null);
-                                } else {
-                                    commandBar.getUserEdit().setOnAction(
-                                            new ToUpdateUserPanel(getTableView().getItems().get(getIndex()), tableView));
-
-                                    commandBar.getUserDelete().setOnAction(
-                                            new ToDelete(getTableView().getItems().get(getIndex()).getId(), tableView));
-
-                                    setGraphic(commandBar);
-                                    setText(null);
-                                }
-                            }
-                        };
-                        return cell;
+                            setGraphic(commandBar);
+                            setText(null);
+                        }
                     }
                 };
+                return cell;
+            }
+        };
         userCommand.setCellFactory(cellCommand);
-
-
-        // 多选
-//        tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-
 
         tableView.setEditable(true);
         tableView.setId("tableView");
-        tableView.setItems(cacheData);
+        tableView.setItems(userCacheData);
         tableView.setMinSize(884,680);
         tableView.styleProperty();
         tableView.getColumns().setAll(checkBoxColumn, userNumber, userId, userName, userPassword, userSex,
                 userBirthday, userTelphone, userEmail, userCommand);
-//        tableView.getColumns().setAll(checkBoxColumn, userStudentId, userName, userSex,
-//                userBirthday, userTelphone, userEmail, userCommand);
 
         searchInput.setId("searchInput");
         searchInput.setPadding(new Insets(0,0,0,10));
@@ -196,17 +186,12 @@ public class UserManagePanel extends VBox {
         addButton.setOnAction(new ToInsertUserPanel(tableView));
 
         batchDeletionButton.setId("batchDeletionButton");
-
-//        batchDeletionButton.setOnMousePressed(new ToBatchDelete(tableView));
         batchDeletionButton.setOnAction(new ToBatchDelete(tableView));
 
         functionBar.setSpacing(20);
         functionBar.getChildren().addAll(searchInput, searchButton, addButton, batchDeletionButton);
 
-
         this.getChildren().addAll(functionBar,tableView);
-
-
 
     }
 }

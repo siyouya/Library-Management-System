@@ -1,5 +1,6 @@
 package cc.southseast.controller.change;
 
+import cc.southseast.view.ui.manage.book.BookManagePanel;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import cc.southseast.view.ui.manage.ManagePanel;
@@ -9,12 +10,12 @@ import cc.southseast.view.ui.manage.ManagePanel;
 public class ToBookManagePanel implements EventHandler<MouseEvent> {
 
     private ManagePanel managePanel;
-//    private BorderPane choosePanel;
+
+    private BookManagePanel bookManagePanel = new BookManagePanel();
 
     public ToBookManagePanel(ManagePanel managePanel){
 
         this.managePanel = managePanel;
-//        this.choosePanel = choosePanel;
     }
 
     @Override
@@ -24,6 +25,9 @@ public class ToBookManagePanel implements EventHandler<MouseEvent> {
         managePanel.getUserManageButton().setStyle("-fx-background-color: TRANSPARENT");
         managePanel.getPublishManageButton().setStyle("-fx-background-color: TRANSPARENT");
         managePanel.getBorrowManageButton().setStyle("-fx-background-color: TRANSPARENT");
+        managePanel.getManageMain().getChildren().clear();
+        managePanel.getManageMain().getChildren().addAll(bookManagePanel);
+
 
 //        for (int i = 0; i < 4; i++)
 //            choosePanel.getChildren().get(i).setStyle("-fx-background-color: TRANSPARENT");

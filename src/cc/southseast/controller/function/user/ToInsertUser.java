@@ -1,4 +1,4 @@
-package cc.southseast.controller.function;
+package cc.southseast.controller.function.user;
 
 import cc.southseast.controller.sm.SM3Digest;
 import cc.southseast.model.User;

@@ -10,23 +10,22 @@ public class CheckBoxTableView<S, T> extends TableCell<S, T> {
 
     public CheckBoxTableView() {
         this.jfxCheckBox = new JFXCheckBox();
-        //添加元素
+        // 添加元素
         setGraphic(jfxCheckBox);
     }
 
     @Override
     protected void updateItem(T item, boolean empty) {
-//        System.out.println("empty："+empty);
+
         super.updateItem(item, empty);
         if (empty) {
-            //如果此列为空默认不添加元素
+            // 如果此列为空默认不添加元素
             setText(null);
             setGraphic(null);
         } else {
-            //初始化为不选中
+            // 初始化为不选中
             jfxCheckBox.setSelected(false);
             setGraphic(jfxCheckBox);
-
         }
     }
 }

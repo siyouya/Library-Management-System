@@ -1,10 +1,9 @@
-package cc.southseast.controller.function;
+package cc.southseast.controller.function.user;
 
 import cc.southseast.model.User;
 import com.jfoenix.controls.JFXTextField;
 
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.TableView;
@@ -13,6 +12,7 @@ import org.nutz.dao.Cnd;
 import java.util.List;
 
 import static cc.southseast.controller.function.ToConnect.dao;
+import static cc.southseast.controller.function.ToGetData.userCacheData;
 
 /**
  * @Author: Southseast
@@ -34,12 +34,18 @@ public class ToSearch implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent event) {
 
-        String studentId = searchInput.getText();
-        List<User> userList = dao.query(User.class, Cnd.where("studentId", "like", "%" + studentId + "%"));
+        String id = searchInput.getText();
+        List<User> userList = dao.query(User.class, Cnd.where("id", "like", "%" + id + "%"));
         tableView.getItems().clear();
 
-        ObservableList<User> cacheData = FXCollections.observableArrayList(userList);
-        tableView.setItems(cacheData);
+        userCacheData = FXCollections.observableArrayList(userList);
+        tableView.setItems(userCacheData);
+
+
+        for (User user: userCacheData) {
+            System.out.println(user.toString());
+        }
+
         tableView.refresh();
     }
 }

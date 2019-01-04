@@ -1,7 +1,7 @@
-package cc.southseast.controller.change;
+package cc.southseast.controller.change.publish;
 
 import cc.southseast.view.ui.base.BasePanel;
-import cc.southseast.view.ui.manage.InsertPanel;
+import cc.southseast.view.ui.manage.publish.PublishInsertPanel;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -15,11 +15,11 @@ import javafx.stage.Stage;
  * @Date: 2019/1/1 7:09 PM
  * @Version 1.0
  */
-public class ToInsertUserPanel implements EventHandler<ActionEvent> {
+public class ToInsertPublishPanel implements EventHandler<ActionEvent> {
 
     private TableView tableView = new TableView();
 
-    public ToInsertUserPanel(TableView tableView) {
+    public ToInsertPublishPanel(TableView tableView) {
 
         this.tableView = tableView;
     }
@@ -29,13 +29,13 @@ public class ToInsertUserPanel implements EventHandler<ActionEvent> {
 
         Stage addStage = new Stage();
 
-        InsertPanel insertPanel = new InsertPanel(tableView, addStage);
+        PublishInsertPanel publishInsertPanel = new PublishInsertPanel(tableView, addStage);
 
         BasePanel root = new BasePanel();
 
         root.windowsInit(addStage);
 
-        root.addInsertPanel(insertPanel);
+        root.addPublishInsertPanel(publishInsertPanel);
 
         Scene scene = new Scene(root);
 

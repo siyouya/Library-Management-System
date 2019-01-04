@@ -44,21 +44,21 @@ public class LoginPanel extends HBox
         loginId.setId("loginId");
         loginId.setPromptText("请输入账号");
         loginId.setText("1712121212");
-        loginMain.add(loginId, 0, 0);
 
         loginPassword.setId("loginPassword");
         loginPassword.setPromptText("请输入密码");
         loginPassword.setText("south");
-        loginMain.add(loginPassword, 0, 1);
 
         loginButton.setId("loginButton");
         loginButton.setMinHeight(73);
         loginButton.setMinWidth(73);
         loginButton.setText("登陆");
+        loginButton.setOnMousePressed(new ToLoginPanel(loginId, loginPassword));
+
+        loginMain.add(loginId, 0, 0);
+        loginMain.add(loginPassword, 0, 1);
         loginMain.add(loginButton,1,0,1,2);
         loginMain.setPadding(new Insets(100,0,0,0));
-
-        loginButton.setOnMousePressed(new ToLoginPanel(loginId, loginPassword));
         this.setSpacing(300);
 
 

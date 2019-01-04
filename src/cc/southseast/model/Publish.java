@@ -5,73 +5,53 @@ import org.nutz.dao.entity.annotation.*;
 @Table("publish")
 public class Publish {
 
-    @Id
-    private int id;
 
+    @Id(auto=false)
     // 出版社编号
-    private String number;
+    private long publishId;
 
     // 出版社
-    private String name;
+    private String publishName;
 
-    private String telphone;
+    private String publishPhone;
 
-    private String address;
+    private Boolean isCheck;
 
-    private String boss;
+    public Publish(long publishId, String publishName, String publishPhone, Boolean isCheck) {
+        this.publishId = publishId;
+        this.publishName = publishName;
+        this.publishPhone = publishPhone;
+        this.isCheck = isCheck;
+    }
 
     public Publish() {
     }
 
-    public Publish(String number, String name, String telphone, String address, String boss) {
-        this.number = number;
-        this.name = name;
-        this.telphone = telphone;
-        this.address = address;
-        this.boss = boss;
+    public long getPublishId() {
+        return publishId;
     }
 
-    public long getId() {
-        return id;
+    public void setPublishId(long publishId) {
+        this.publishId = publishId;
     }
 
-    public String getNumber() {
-        return number;
+    public String getPublishName() { return publishName; }
+
+    public void setPublishName(String publishName) {
+        this.publishName = publishName;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public String getPublishPhone() {
+        return publishPhone;
     }
 
-    public String getName() {
-        return name;
+    public void setPublishPhone(String publishPhone) { this.publishPhone = publishPhone; }
+
+    public Boolean getCheck() {
+        return isCheck;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getTelphone() {
-        return telphone;
-    }
-
-    public void setTelphone(String telphone) {
-        this.telphone = telphone;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getBoss() {
-        return boss;
-    }
-
-    public void setBoss(String boss) {
-        this.boss = boss;
+    public void setCheck(Boolean check) {
+        isCheck = check;
     }
 }

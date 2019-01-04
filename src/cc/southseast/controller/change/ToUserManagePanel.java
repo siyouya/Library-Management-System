@@ -3,7 +3,7 @@ package cc.southseast.controller.change;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import cc.southseast.view.ui.manage.ManagePanel;
-import cc.southseast.view.ui.manage.UserManagePanel;
+import cc.southseast.view.ui.manage.user.UserManagePanel;
 
 public class ToUserManagePanel implements EventHandler<MouseEvent> {
 

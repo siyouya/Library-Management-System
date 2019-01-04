@@ -51,9 +51,10 @@ public class ToLoginPanel implements EventHandler<MouseEvent> {
         }
         else{
 
-            User user = ToConnect.dao.fetch(User.class,Integer.parseInt(id.getText()));
+            if (ToConnect.dao.fetch(User.class,Long.parseLong(id.getText())) != null){
+                User user = ToConnect.dao.fetch(User.class,Long.parseLong(id.getText()));
 
-            if (user.getAdmin() && user.getPassword().equals(SM3Digest.encode(password.getText()))) {
+                if (user.getAdmin() && user.getPassword().equals(SM3Digest.encode(password.getText()))) {
 
                     //创建管理面板
                     AdminManagePanel adminManagePanel = new AdminManagePanel();
@@ -66,20 +67,38 @@ public class ToLoginPanel implements EventHandler<MouseEvent> {
 
                     // 添加管理面板
                     root.getChildren().addAll(adminManagePanel);
-            }
-            else if (!user.getAdmin() && user.getPassword().equals(SM3Digest.encode(password.getText()))) {
+                }
+                else if (!user.getAdmin() && user.getPassword().equals(SM3Digest.encode(password.getText()))) {
 
-                //创建管理面板
-                OrdinaryUsersManagePanel ordinaryUsersManagePanel = new OrdinaryUsersManagePanel();
+                    //创建管理面板
+                    OrdinaryUsersManagePanel ordinaryUsersManagePanel = new OrdinaryUsersManagePanel();
 
-                // 获取父级
-                VBox root = (VBox) id.getParent().getParent().getParent();
+                    // 获取父级
+                    VBox root = (VBox) id.getParent().getParent().getParent();
 
-                // 清除所有子级
-                root.getChildren().clear();
+                    // 清除所有子级
+                    root.getChildren().clear();
 
-                // 添加管理面板
-                root.getChildren().addAll(ordinaryUsersManagePanel);
+                    // 添加管理面板
+                    root.getChildren().addAll(ordinaryUsersManagePanel);
+                }
+                else {
+
+                    Stage hintStage = new Stage();
+                    BasePanel root = new BasePanel();
+                    HintPanel hintPanel = new HintPanel(LOGIN_ERROR);
+                    Scene scene = new Scene(root);
+                    Stage stage = (Stage) password.getScene().getWindow();
+                    root.windowsInit(hintStage);
+                    root.addHintPanel(hintPanel);
+                    // 设置透明度
+                    scene.setFill(Color.TRANSPARENT);
+                    hintStage.initModality(Modality.WINDOW_MODAL);
+                    hintStage.initOwner(stage);
+                    hintStage.setScene(scene);
+                    hintStage.show();
+                }
+
             }
             else {
 
